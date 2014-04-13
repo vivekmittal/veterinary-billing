@@ -6,6 +6,7 @@ import com.veterinary.Patient;
 import com.veterinary.exception.NotAnOwnerException;
 import org.testng.annotations.Test;
 
+import static com.veterinary.service.Medicine.UNIENZYME;
 import static com.veterinary.service.Procedure.REGULAR_CHECKUP;
 import static com.veterinary.service.Procedure.SURGERY;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -20,11 +21,11 @@ public class OneOwnerPaysItAllTest {
         Patient patient = new Patient(Animal.HORSE, "Whitey");
 
         patient.perform(REGULAR_CHECKUP);
-        patient.perform(SURGERY);
+        patient.perform(UNIENZYME);
 
         MultipleOwnerBill decoratedBill = new OneOwnerPaysItAll(patient.bill(), BOB, BOB, JOHN);
 
-        assertThat(decoratedBill.costOccurredFor(BOB), is(15000));
+        assertThat(decoratedBill.costOccurredFor(BOB), is(5040));
         assertThat(decoratedBill.costOccurredFor(JOHN), is(0));
     }
 
@@ -34,6 +35,7 @@ public class OneOwnerPaysItAllTest {
 
         patient.perform(REGULAR_CHECKUP);
         patient.perform(SURGERY);
+        patient.perform(UNIENZYME);
 
         MultipleOwnerBill decoratedBill = new OneOwnerPaysItAll(patient.bill(), JOHN, JOHN);
 

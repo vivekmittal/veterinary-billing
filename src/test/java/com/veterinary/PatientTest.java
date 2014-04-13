@@ -14,9 +14,9 @@ public class PatientTest {
         Patient patient = new Patient(Animal.CAT, "Drowny");
 
         patient.perform(Procedure.REGULAR_CHECKUP);
-        patient.perform(Medicine.SOME_SORT);
+        patient.perform(Medicine.CROCIN);
 
-        assertThat(patient, isBilled(1100));
+        assertThat(patient, isBilled(1010));
     }
 
     @Test(expectedExceptions = ServiceNotAvailableForAnimalException.class)

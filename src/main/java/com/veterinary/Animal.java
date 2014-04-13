@@ -10,13 +10,16 @@ public enum Animal {
 
     CAT(new HashMap<MedicalService, Integer>(){{
         this.put(Procedure.REGULAR_CHECKUP, 1000);
-        this.put(Medicine.SOME_SORT, Medicine.SOME_SORT.price());
+        this.put(Medicine.PARACETAMOL, Medicine.PARACETAMOL.price());
+        this.put(Medicine.CROCIN, Medicine.CROCIN.price());
+        this.put(Medicine.UNIENZYME, Medicine.UNIENZYME.price());
     }}),
 
     HORSE(new HashMap<MedicalService, Integer>(){{
         this.put(Procedure.REGULAR_CHECKUP, 5000);
         this.put(Procedure.SURGERY,10000);
-        this.put(Medicine.SOME_SORT, Medicine.SOME_SORT.price());
+        this.put(Medicine.PARACETAMOL, Medicine.PARACETAMOL.price());
+        this.put(Medicine.UNIENZYME, Medicine.UNIENZYME.price());
     }});
 
     private final Map<MedicalService, Integer> servicesToPriceMap;

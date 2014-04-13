@@ -3,7 +3,9 @@ package com.veterinary.service;
 import com.veterinary.MedicalService;
 
 public enum Medicine implements MedicalService {
-    SOME_SORT(100);
+    PARACETAMOL(100),
+    UNIENZYME(40),
+    CROCIN(10);
 
     private int price;
 

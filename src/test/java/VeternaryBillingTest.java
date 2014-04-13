@@ -5,7 +5,7 @@ import com.veterinary.billing.*;
 import org.testng.annotations.Test;
 
 import static com.veterinary.billing.LineItemsBill.LineItem.newLineItem;
-import static com.veterinary.service.Medicine.SOME_SORT;
+import static com.veterinary.service.Medicine.PARACETAMOL;
 import static com.veterinary.service.Procedure.REGULAR_CHECKUP;
 import static com.veterinary.service.Procedure.SURGERY;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -61,13 +61,13 @@ public class VeternaryBillingTest {
         Patient patient = new Patient(Animal.HORSE, "Whitey");
 
         patient.perform(REGULAR_CHECKUP);
-        patient.perform(SOME_SORT);
+        patient.perform(PARACETAMOL);
         patient.perform(SURGERY);
 
         MultipleOwnerBill decoratedBill = new LineItemsBill(patient.bill(),
                 newLineItem(BOB, SURGERY),
                 newLineItem(JOHN, REGULAR_CHECKUP),
-                newLineItem(BOB, SOME_SORT));
+                newLineItem(BOB, PARACETAMOL));
 
         assertThat(decoratedBill.costOccurredFor(BOB), is(10100));
         assertThat(decoratedBill.costOccurredFor(JOHN), is(5000));
