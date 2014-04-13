@@ -13,6 +13,7 @@ This application handle modes of billing in a veterinary hospital that can be do
 - One Pays it all
 - Each Owner is responsible for some services and pays for the same
 
+<b>Billing Mappings (Cost of services for various animals) are declared in class com.veterinary.Animal</b>
 
 USAGE
 -------
