@@ -26,7 +26,6 @@ public class VeternaryBillingTest {
 
         SingleOwnerBill decoratedBill = new SingleOwnerBill(patient.bill(), BOB);
 
-        System.out.println(decoratedBill);
         assertThat(decoratedBill.costOccurred(), is(1000));
     }
 
