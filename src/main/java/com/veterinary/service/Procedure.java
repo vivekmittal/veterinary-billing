@@ -1,8 +1,8 @@
 package com.veterinary.service;
 
-import com.veterinary.Service;
+import com.veterinary.MedicalService;
 
-public enum Procedure implements Service {
+public enum Procedure implements MedicalService {
     REGULAR_CHECKUP,
     SURGERY
 }

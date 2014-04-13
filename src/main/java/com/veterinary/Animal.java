@@ -8,28 +8,28 @@ import java.util.Map;
 
 public enum Animal {
 
-    CAT(new HashMap<Service, Integer>(){{
+    CAT(new HashMap<MedicalService, Integer>(){{
         this.put(Procedure.REGULAR_CHECKUP, 1000);
         this.put(Medicine.SOME_SORT, Medicine.SOME_SORT.price());
     }}),
 
-    HORSE(new HashMap<Service, Integer>(){{
+    HORSE(new HashMap<MedicalService, Integer>(){{
         this.put(Procedure.REGULAR_CHECKUP, 5000);
         this.put(Procedure.SURGERY,10000);
         this.put(Medicine.SOME_SORT, Medicine.SOME_SORT.price());
     }});
 
-    private final Map<Service, Integer> servicesToPriceMap;
+    private final Map<MedicalService, Integer> servicesToPriceMap;
 
-    private Animal(Map<Service, Integer> servicesToPriceMap) {
+    private Animal(Map<MedicalService, Integer> servicesToPriceMap) {
         this.servicesToPriceMap = servicesToPriceMap;
     }
 
-    public Integer priceFor(Service service) {
-        return this.servicesToPriceMap.get(service);
+    public int priceFor(MedicalService medicalService) {
+        return this.servicesToPriceMap.get(medicalService);
     }
 
-    public boolean canHaveRequested(Service service) {
-        return this.servicesToPriceMap.containsKey(service);
+    public boolean canHaveRequested(MedicalService medicalService) {
+        return this.servicesToPriceMap.containsKey(medicalService);
     }
 }

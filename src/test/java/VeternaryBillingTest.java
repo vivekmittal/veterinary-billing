@@ -1,11 +1,7 @@
 import com.veterinary.Animal;
 import com.veterinary.Owner;
 import com.veterinary.Patient;
-import com.veterinary.billing.DistributeEvenlyBill;
-import com.veterinary.billing.LineItemsBill;
-import com.veterinary.billing.MultipleOwnerBill;
-import com.veterinary.billing.OneOwnerPaysItAll;
-import com.veterinary.exception.ServiceNotAvailableForAnimalException;
+import com.veterinary.billing.*;
 import org.testng.annotations.Test;
 
 import static com.veterinary.billing.LineItemsBill.LineItem.newLineItem;
@@ -15,25 +11,23 @@ import static com.veterinary.service.Procedure.SURGERY;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 
+/*
+    toString of all the bill classes are overridden to print the bill summary
+ */
 public class VeternaryBillingTest {
     private static final Owner BOB = new Owner("BOB");
     private static final Owner JOHN = new Owner("JOHN");
 
     @Test
-    public void shouldBillClient() {
+    public void singleOwnerBill() {
         Patient patient = new Patient(Animal.CAT, "Kessels");
 
         patient.perform(REGULAR_CHECKUP);
 
-        assertThat(patient.bill().value(), is(1000));
-        System.out.println(patient.bill());
-    }
+        SingleOwnerBill decoratedBill = new SingleOwnerBill(patient.bill(), BOB);
 
-    @Test(expectedExceptions = ServiceNotAvailableForAnimalException.class)
-    public void serviceNotAvailable(){
-        Patient patient = new Patient(Animal.CAT, "Lily");
-
-        patient.perform(SURGERY);
+        System.out.println(decoratedBill);
+        assertThat(decoratedBill.costOccurred(), is(1000));
     }
 
     @Test

@@ -1,16 +1,17 @@
 package com.veterinary.billing;
 
+import com.veterinary.Hospital;
+import com.veterinary.MedicalService;
 import com.veterinary.Patient;
-import com.veterinary.Service;
 
 import java.util.Map;
 
 public class Bill {
     private final Patient patient;
-    private final Map<Service, Integer> services;
+    private final Map<MedicalService, Integer> services;
     private Integer totalCost;
 
-    public Bill(Patient patient, Map<Service, Integer> services) {
+    public Bill(Patient patient, Map<MedicalService, Integer> services) {
         this.patient = patient;
         this.services = services;
     }
@@ -30,22 +31,23 @@ public class Bill {
         return patient;
     }
 
-    public boolean hasService(Service service) {
-        return services.containsKey(service);
+    public boolean hasService(MedicalService medicalService) {
+        return services.containsKey(medicalService);
     }
 
-    public int costOf(Service service) {
-        return services.get(service);
+    public int costOf(MedicalService medicalService) {
+        return services.get(medicalService);
     }
 
     public String toString() {
-        StringBuffer bill = new StringBuffer();
+        StringBuffer bill = new StringBuffer(Hospital.NAME);
+        bill.append("\n--------------------\n");
 
         bill.append(
-            String.format("Generating Bill for %s (%s) \n", patient.name(), patient.animal())
+            String.format("Bill for %s (%s) \n\n", patient.name(), patient.animal())
         );
 
-        for (Map.Entry<Service, Integer> entry : services.entrySet()) {
+        for (Map.Entry<MedicalService, Integer> entry : services.entrySet()) {
             bill.append(
                 String.format("%s - %d \n", entry.getKey(), entry.getValue())
             );

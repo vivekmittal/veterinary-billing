@@ -11,7 +11,7 @@ import static com.google.common.collect.Sets.newHashSet;
 
 public class Patient {
     private final Animal animal;
-    private final Set<Service> servicesUsed;
+    private final Set<MedicalService> servicesUsed;
     private final String name;
 
     public Patient(Animal animal, String name) {
@@ -24,19 +24,19 @@ public class Patient {
         return this.name;
     }
 
-    public void perform(Service service) {
-        if (!animal.canHaveRequested(service)) {
-            throw new ServiceNotAvailableForAnimalException(service, animal);
+    public void perform(MedicalService medicalService) {
+        if (!animal.canHaveRequested(medicalService)) {
+            throw new ServiceNotAvailableForAnimalException(medicalService, animal);
         }
 
-        servicesUsed.add(service);
+        servicesUsed.add(medicalService);
     }
 
     public Bill bill() {
-        return new Bill(this, Maps.asMap(servicesUsed, new Function<Service, Integer>() {
+        return new Bill(this, Maps.asMap(servicesUsed, new Function<MedicalService, Integer>() {
             @Override
-            public Integer apply(Service hospitalService) {
-                return animal.priceFor(hospitalService);
+            public Integer apply(MedicalService hospitalMedicalService) {
+                return animal.priceFor(hospitalMedicalService);
             }
         }));
     }

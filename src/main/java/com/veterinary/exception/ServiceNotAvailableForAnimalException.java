@@ -1,12 +1,12 @@
 package com.veterinary.exception;
 
 import com.veterinary.Animal;
-import com.veterinary.Service;
+import com.veterinary.MedicalService;
 
 public class ServiceNotAvailableForAnimalException extends RuntimeException {
-    public ServiceNotAvailableForAnimalException(Service service, Animal animal) {
+    public ServiceNotAvailableForAnimalException(MedicalService medicalService, Animal animal) {
         super(
-                String.format("Requested Service %s is not available for %s", service, animal)
+                String.format("Requested MedicalService %s is not available for %s", medicalService, animal)
         );
     }
 }

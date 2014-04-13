@@ -1,8 +1,8 @@
 package com.veterinary.service;
 
-import com.veterinary.Service;
+import com.veterinary.MedicalService;
 
-public enum Medicine implements Service {
+public enum Medicine implements MedicalService {
     SOME_SORT(100);
 
     private int price;
