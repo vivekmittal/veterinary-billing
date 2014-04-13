@@ -64,9 +64,8 @@ public class VeternaryBillingTest {
         patient.perform(SURGERY);
 
         MultipleOwnerBill decoratedBill = new LineItemsBill(patient.bill(),
-                newLineItem(BOB, SURGERY),
-                newLineItem(JOHN, REGULAR_CHECKUP),
-                newLineItem(BOB, PARACETAMOL));
+                newLineItem(BOB, SURGERY, PARACETAMOL),
+                newLineItem(JOHN, REGULAR_CHECKUP));
 
         assertThat(decoratedBill.costOccurredFor(BOB), is(10100));
         assertThat(decoratedBill.costOccurredFor(JOHN), is(5000));
