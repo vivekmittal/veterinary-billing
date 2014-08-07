@@ -1,6 +1,8 @@
 veterinary-billing
 ==================
 
+[![Build Status](https://travis-ci.org/vivekmittal/veterinary-billing.svg?branch=master)](https://travis-ci.org/vivekmittal/veterinary-billing)
+
 <B><i>A demonstration of Fluent interfaces / TDD / Functional idioms applied with OOPS</i></b>
 
 This application handle modes of billing in a veterinary hospital that can be done in three ways:
