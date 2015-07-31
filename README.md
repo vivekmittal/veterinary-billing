@@ -2,6 +2,7 @@ veterinary-billing
 ==================
 
 [![Build Status](https://travis-ci.org/vivekmittal/veterinary-billing.svg?branch=master)](https://travis-ci.org/vivekmittal/veterinary-billing)
+[![License](http://img.shields.io/:license-apache-blue.svg)](https://github.com/vivekmittal/veterinary-billing/blob/master/LICENSE)
 
 <B><i>A demonstration of Fluent interfaces / TDD / Functional idioms applied with OOPS</i></b>
 
